@@ -16,11 +16,11 @@ class CreateDailyScrumsTable extends Migration
         Schema::create('daily_scrums', function (Blueprint $table) {
             $table->id();
             $table->integer('id_users');
-            $table->enum('team', array('DDS','BEON','node1','node2','react1','react2','laravel,','laravel_vue','android'));
-            $table->text('activity_yesterday');
-            $table->text('activity_today');
-            $table->text('problem_yesterday');
-            $table->text('solution');
+            $table->enum('team', array('DDS','BEON','node1','node2','react1','react2','laravel,','laravel_vue','android'))->default('DDS');
+            $table->string('activity_yesterday');
+            $table->string('activity_today');
+            $table->string('problem_yesterday');
+            $table->string('solution');
             $table->timestamps();
         });
     }

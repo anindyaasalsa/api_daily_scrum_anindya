@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::post('register', 'UserController@register');
 Route::post('login', 'UserController@login');
 
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware(['jwt.verify'])->group(function(){
+    Route::get('daily_scrum/{id}', "DailyScrumController@index"); //read detail
+	Route::get('daily_scrum/{limit}/{offset}', "DailyScrumController@getAll"); //read detail
+	Route::post('daily_scrum', 'DailyScrumController@store'); //create detail
+	Route::delete('daily_scrum/{id}', "DailyScrumController@delete"); //delete detail
 });
